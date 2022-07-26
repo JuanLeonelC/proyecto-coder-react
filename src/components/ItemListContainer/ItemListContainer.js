@@ -1,11 +1,25 @@
 import ItemProduct from '../ItemProduct/ItemProduct';
 
-const ItemListContainer = () => {
+
+const ItemListContainer = ({section}) => {
+    const product1 = {
+        title: "Campera Invierno",
+        price: 15000,
+        stock: 6
+    }
+    const product2 = {
+        title: "Remera",
+        price: 34000,
+        stock: 10
+    }
+
+    const handleSubmit = () => {console.log("Envio de info")}
+
     return(
-        // Fragment
-        <div className='products'>
-            <ItemProduct title="Campera Invierno" price={15000}/>
-            <ItemProduct title="Remera" price={3400}/>
+        <div className='list-products'>
+            <h2>{section}</h2>
+            <ItemProduct data={product1} action={handleSubmit}/>
+            <ItemProduct data={product2}/>
         </div>
     )
 }
