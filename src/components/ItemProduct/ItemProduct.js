@@ -23,7 +23,7 @@ const ItemProduct = ({data, action}) => {
 
 
     return(
-        <div className="item-product">
+        <div>
             <p>{title}</p>
             <span>$ {price}</span>
             <div className='countProd'>
