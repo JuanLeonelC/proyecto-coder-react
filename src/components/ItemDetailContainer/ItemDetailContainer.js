@@ -1,39 +1,32 @@
-import { useEffect, useState } from "react";
-import ItemDetails from "../ItemDetails/itemDetails";
-import products from "../../utils/products.mock";
+import { useEffect, useState } from "react"
+import ItemDetail from "../ItemDetail/ItemDetail"
+import './ItemDetailContainer.css'
+import products from "../../utils/products.mock"
+import { useParams } from 'react-router-dom'
 
+const ItemDetailContainer = () => {
+    const [productData, setProductData] = useState({})
 
-const ItemDetailContainer = ({section}) => {
+    const { id } = useParams()
+    
+    useEffect( () => {
+        filterById()
+    }, [id])
 
-    const [listDetails, setListDetails] = useState([])
-
-    const getDetails = new Promise( (resolve, reject) => {
-        setTimeout( () => {
-            resolve(products)
-        }, 2000)
-    })
-
-    useEffect(() => {
-        getDetails
-            .then( (res) => {
-                setListDetails(res)
-            })
-            .catch( (error) => {
-                console.log("la llama fallo")
-            })
-            .finally( () => {
-            })
-    }, [])
-
-
-
-
+    const filterById = () => {
+        products.some( (product) => {
+            if(product.id == id) {
+                console.log("producto filtrado: ", product)
+                setProductData(product) 
+            }
+        }
+    )
+    }
     return(
         <div>
-            <h2>{section}</h2>
-            <ItemDetails detailsProducts={listDetails}/>
+            <ItemDetail data={productData}/>
         </div>
     )
 }
 
-export default ItemDetailContainer;
+export default ItemDetailContainer

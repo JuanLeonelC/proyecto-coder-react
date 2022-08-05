@@ -1,15 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/NavBar/NavBar.js';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home';
+import Contact from './pages/Contact';
+import Products from './pages/Products';
+import Detail from './pages/Detail';
+import Cart from './pages/Cart';
 
 function App() {
   return (
     <div>
+      <BrowserRouter>
       <NavBar />
-      <itemListContainer />
-      <ItemDetailContainer />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Contact" element={<Contact />} />
+        <Route path="/Products" element={<Products />} />
+        <Route path="/product/:id" element={<Detail />} />
+        <Route path="/Cart" element={<Cart />} />
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }

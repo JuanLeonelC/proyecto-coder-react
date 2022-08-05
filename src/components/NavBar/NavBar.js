@@ -1,16 +1,23 @@
 import "./NavBar.css"
-import CardWidget from "./CartWidget";
+import CartWidget from "./CartWidget";
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
     return(
         // Fragment
         <div>
             <ul className="navbar">
-                <li><a href="#">Qwerty's</a></li>
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Sobre Nosotros</a></li>
-                <li><a href="#">Contactanos</a></li>
-                <CardWidget />
+                <li><Link to="/"><button>Qwerty's</button></Link></li>
+                <li><Link to="/Products"><button>Productos</button></Link></li>
+                <li><Link to="/Contact"><button>Contacto</button></Link></li>
+                <li><Link to="/Cart">
+                    <CartWidget />
+                </Link></li>
+                
+                
+                
+                
+                
             </ul>
         </div>
     )

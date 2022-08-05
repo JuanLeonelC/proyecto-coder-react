@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import "./ItemProduct.css";
-
+import { Link } from 'react-router-dom'
 
 const ItemProduct = ({data, action}) => {
     const [contador, setContador] = useState(1)
@@ -23,16 +23,15 @@ const ItemProduct = ({data, action}) => {
 
 
     return(
-        <div>
+        <div className='ProductsDiv'>
             <p>{title}</p>
+            <img src={`/assets/${image}`} alt="imagen" />
             <span>$ {price}</span>
-            <div className='countProd'>
-                <button onClick={removeNumber}>-</button>
-                <p>{contador}</p>
-                <button onClick={addNumber}>+</button>
-            </div>
-            <button onClick={action}>Comprar</button>
-        </div> 
+            <Link to={`/product/${data.id}`}>
+            <button onClick={action} className='BuyButton'>Saber Mas</button>
+            </Link>
+        </div>
+
     )
 }
 

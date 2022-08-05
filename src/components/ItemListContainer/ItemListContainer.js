@@ -30,7 +30,7 @@ const ItemListContainer = ({section}) => {
 
 
     return(
-        <div>
+        <div className="MainDiv">
             <h2>{section}</h2>
             <ItemList dataProducts={listProducts}/>
         </div>

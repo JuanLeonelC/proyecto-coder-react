@@ -1,0 +1,22 @@
+.DetailDiv{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    gap: 10px;
+}
+
+.DetailImg img{
+    height: 100%;
+    width: 750px;
+}
+
+.DetailInfo{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

@@ -2,7 +2,7 @@
 import { BsFillCartFill } from "react-icons/bs";
 
 
-const CardWidget = () => {
+const CartWidget = () => {
   return (
     // Fragment
     <div>
@@ -13,4 +13,4 @@ const CardWidget = () => {
 };
 
 
-export default CardWidget;
+export default CartWidget;

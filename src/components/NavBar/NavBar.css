@@ -1,12 +1,17 @@
 .navbar{
     display:flex;
     flex-flow: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     list-style: none;
 }
 
-.navbar li a{
-    text-decoration: none;
-    color: black;
+.navbar li{
+    list-style: none;
+}
+
+.navbar li button{
+    border-style: none;
+    background-color: transparent;
+    color: gray;
 }
