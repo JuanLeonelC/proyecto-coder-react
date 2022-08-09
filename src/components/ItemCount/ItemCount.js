@@ -1,29 +1,36 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+const ItemCount = ({ stock, initial, onAdd }) => {
 
-const ItemCount = ({setQuantitySelected}) => {
-    const [countQuantity, setCountQuantity] = useState(1)
+    const [quantity, setQuantity] = useState(initial)
 
-    const addQuantity = () => {
-        setCountQuantity(countQuantity + 1)
+    const agregarCantidad = () => {
+        if (quantity < stock) {
+            setQuantity(quantity + 1)
+        }
     }
 
-    const removeQuantity = () => {
-        setCountQuantity(countQuantity - 1)
+    const restarCantidad = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1)
+        }
     }
 
-    const onAdd = () => {
-        setQuantitySelected(countQuantity)
-    }
 
-    return(
-        <>
-            <div className="container-count">
-                <button onClick={removeQuantity}>-</button>
-                <span>{countQuantity}</span>
-                <button onClick={addQuantity}>+</button>
+    return (
+        <div>
+                <div>
+                    <div>
+                        <button onClick={restarCantidad} className="btn">-</button>
+                    </div>
+                        <p>{quantity}</p>
+                    <div>
+                        <button onClick={agregarCantidad} className="btn">+</button>
+                    </div>
+                    <div>
+                        <button onClick={() => onAdd(quantity)} className="btn">Agregar al carrito</button>
+                    </div>
+                </div>
             </div>
-            <button onClick={onAdd}>AGREGAR AL CARRITO</button>
-        </>
     )
 }
 

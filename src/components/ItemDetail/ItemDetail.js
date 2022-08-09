@@ -1,29 +1,38 @@
-import ItemCount from "../ItemCount/ItemCount"
-import { useState } from "react"
-import { Link } from 'react-router-dom'
-import "./ItemDetail.css"
+import React from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import ItemCount from "../ItemCount/ItemCount";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
-const ItemDetail = ({data}) => {
-    const [quantitySelected, setQuantitySelected] = useState(0)
 
-    const {title, image, price, stock, description} = data
-    return (
-        <div className="DetailDiv">
-            <div className="DetailImg">
-                <img src={`/assets/${image}`} alt={title} />
-            </div>
-            <div className="DetailInfo">
-                <h1>{title}</h1>
-                <p>{price}</p>
-                <p>{description}</p>
-                {
-        quantitySelected > 0 ? <button><Link to="/cart">TERMINAR COMPRA</Link></button> : <ItemCount setQuantitySelected={setQuantitySelected}/>
+
+const ItemDetail = ({ product }) => {
+    const { addItem } = useContext(CartContext)
+    const [producto, setProducto] = useState([])
+
+    const onAdd = (contador) => {
+        setProducto(product)
+        addItem(product, contador)
     }
-                <Link to="/cart">
-                </Link>
+    return (
+        <div className="detail_div">
+            <div className="detail_img_div">
+                <img src={product.image} alt="img" className="Details_img"></img>
+            </div>
+            <div className="detail_text_div">
+            <h1>{product.title}</h1>
+            <p>{product.desc}</p>
+            {
+                producto.id ?
+                    <div>
+                        <Link to={"/cart"}><button className="btn">Finalizar compra</button></Link>
+                    </div> :
+                    <ItemCount stock={product.stock} initial={1} onAdd={onAdd} />
+            }
             </div>
         </div>
+    )
+}
 
-        )}
-
-export default ItemDetail
+export default ItemDetail;

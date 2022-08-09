@@ -1,40 +1,47 @@
-import { useEffect, useState } from "react";
-import ItemList from "../ItemList/ItemList";
-import "./ItemListContainer.css";
-import products from "../../utils/products.mock.js";
+import React from "react"
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import products from "../../utils/products.mock"
+import ItemList from "../ItemList/ItemList"
+import "./ItemListContainer.css"
 
-
-const ItemListContainer = ({section}) => {
-
-    const [listProducts, setListProducts] = useState([])
-
-    const getProducts = new Promise( (resolve, reject) => {
-        setTimeout( () => {
-            resolve(products)
-        }, 2000)
-    })
+const ItemListContainer = ({ greeting }) => {
+    const [productos, setProductos] = useState([])
+    const {categoryId} = useParams()
+    let flag = true;
+    const traerProductos = (time, task) => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (flag) {
+                    resolve(task)
+                } else {
+                    reject('Error')
+                }
+            }, time)
+        })
+    }
 
     useEffect(() => {
-        getProducts
-            .then( (res) => {
-                setListProducts(res)
-            })
-            .catch( (error) => {
-                console.log("la llama fallo")
-            })
-            .finally( () => {
-            })
-    }, [])
+        if (categoryId) {
+            traerProductos(1000, products)
+                .then((result) => {
+                    setProductos(result.filter(products => products.category === categoryId))
+                })
+        } else {
+            traerProductos(1000, products)
+                .then((result) => {
+                    setProductos(result)
+                }
+                )
+        }
+    }, [categoryId])
 
-
-
-
-    return(
-        <div className="MainDiv">
-            <h2>{section}</h2>
-            <ItemList dataProducts={listProducts}/>
+    return (
+        <div className='MainDiv'>
+            <h1> {greeting} </h1>
+            <ItemList products={productos} />
         </div>
     )
 }
 
-export default ItemListContainer;
+export default ItemListContainer

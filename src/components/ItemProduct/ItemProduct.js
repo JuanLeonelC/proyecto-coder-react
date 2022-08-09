@@ -1,37 +1,20 @@
-import {useState, useEffect} from 'react'
-import "./ItemProduct.css";
+import ItemCount from '../ItemCount/ItemCount'
 import { Link } from 'react-router-dom'
-
-const ItemProduct = ({data, action}) => {
-    const [contador, setContador] = useState(1)
-
-    const {title, image, price, stock} = data
-
-    const addNumber = () => {
-        if(contador < stock){
-            setContador(contador + 1)
-        }
-    }
-    const removeNumber = () => {
-        if(contador > 1){
-            setContador(contador - 1)
-        }
-    }
-    
-    useEffect( () => {
-    }, [contador])
+import React from 'react'
+import "./ItemProduct.css"
 
 
+const ItemProduct = ({producto}) => {
     return(
         <div className='ProductsDiv'>
-            <p>{title}</p>
-            <img src={`/assets/${image}`} alt="imagen" />
-            <span>$ {price}</span>
-            <Link to={`/product/${data.id}`}>
-            <button onClick={action} className='BuyButton'>Saber Mas</button>
+            <p>{producto.title}</p>
+            <img src={`/assets/${producto.image}`} alt={producto.title} />
+            <span>{producto.price}</span>
+            <Link to={`/detalle/${producto.id}`}>
+            <button className="BuyButton">Saber mas</button>
             </Link>
+            <ItemCount stock={producto.stock} />
         </div>
-
     )
 }
 

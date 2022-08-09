@@ -5,7 +5,7 @@ const products = [
         price: 800,
         image: 'Hamburguesa.jpg',
         stock: 6,
-        description: 'Campera de algodon de color rojo'
+        desc: 'Campera de algodon de color rojo'
     },
     {
         id: 2,
@@ -13,7 +13,7 @@ const products = [
         price: 1200,
         image: 'Lomito.webp',
         stock: 16,
-        description: 'Campera de algodon de color rojo'
+        desc: 'Campera de algodon de color rojo'
     },
     {
         id: 3,
@@ -21,7 +21,7 @@ const products = [
         price: 500,
         image: 'Panchos.jpg',
         stock: 64,
-        description: 'Campera de algodon de color rojo'
+        desc: 'Campera de algodon de color rojo'
     },
     {
         id: 4,
@@ -29,7 +29,7 @@ const products = [
         price: 1200,
         image: 'Fajitas.webp',
         stock: 64,
-        description: 'Campera de algodon de color rojo'
+        desc: 'Campera de algodon de color rojo'
     }
 ]
 
