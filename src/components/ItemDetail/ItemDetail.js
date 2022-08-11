@@ -18,9 +18,9 @@ const ItemDetail = ({ product }) => {
     return (
         <div className="detail_div">
             <div className="detail_img_div">
-                <img src={product.image} alt="img" className="Details_img"></img>
+                <img src={`/assets/${product.image}`} alt="img"></img>
             </div>
-            <div className="detail_text_div">
+            <div>
             <h1>{product.title}</h1>
             <p>{product.desc}</p>
             {
