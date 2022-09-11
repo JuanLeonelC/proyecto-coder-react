@@ -1,4 +1,3 @@
-import "./modal.scss"
 import { Close } from "@mui/icons-material"
 
 const Modal = ({title, close, children}) => {

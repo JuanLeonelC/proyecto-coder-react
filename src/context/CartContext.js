@@ -18,7 +18,7 @@ const CartProvider = ({ children }) => {
             newItem.qty = qty;
             setCart([...cart, newItem]);
             console.log(newItem.price);
-            setTotalPrice(newItem.price + totalPrice);
+            setTotalPrice((newItem.price * qty) + totalPrice);
         } else {
             if (producto.qty + qty > producto.stock)
             return false;
